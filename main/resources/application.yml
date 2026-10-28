@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: labor-service
+  datasource:
+    url: jdbc:h2:mem:labor;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    open-in-view: false
+    properties:
+      hibernate.jdbc.time_zone: UTC
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+    default-property-inclusion: non_null
+    serialization:
+      write-dates-as-timestamps: false
+    mapper:
+      accept-case-insensitive-enums: true
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: alpha
+    tags-sorter: alpha
+
+labor:
+  seed-demo-data: true
+  # Shifts still open after this many hours are flagged for manager review (never auto-closed).
+  open-shift-review-hours: 14
+  pin:
+    max-attempts: 5
+    lockout-minutes: 15
